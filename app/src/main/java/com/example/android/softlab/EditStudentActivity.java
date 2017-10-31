@@ -177,7 +177,16 @@ public class EditStudentActivity extends AppCompatActivity {
         else{
             type=1;
         }
-        Toast.makeText(EditStudentActivity.this,"  "+type+" ",Toast.LENGTH_SHORT).show();
+        if(type==1){
+            new EditExecuteTask().execute(regno);
+        }
+        else if(type==-1){
+            new EditExecuteTask().execute(name,phone);
+        }
+        else{
+            Toast.makeText(EditStudentActivity.this," "+type+" ",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
@@ -335,7 +344,7 @@ public class EditStudentActivity extends AppCompatActivity {
             //user authentication successful
             if(jsonObject.getString("status").equals("success")){
 
-                Intent intent = new Intent(this, HomeActivity.class);
+                Intent intent = new Intent(this, UpdateStudentActivity.class);
                 intent.putExtra("regNo",jsonObject.getString("regNo"));
                 intent.putExtra("course",jsonObject.getString("course"));
                 intent.putExtra("name",jsonObject.getString("name"));
