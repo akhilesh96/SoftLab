@@ -302,7 +302,7 @@ public class EditStudentActivity extends AppCompatActivity {
         try
         {
             HttpClient httpClient=new DefaultHttpClient();
-            HttpPost httpPost=new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/DeleteStudent");
+            HttpPost httpPost=new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/EditStudent");
 
             List<NameValuePair> list=new ArrayList<NameValuePair>();
             if(type==1){
@@ -351,7 +351,7 @@ public class EditStudentActivity extends AppCompatActivity {
 
                 startActivity(intent);
                 finish();
-                showToast("Succesufully Deleted");
+//                showToast("Succesufully Deleted");
             }
             else{
                 showToast("Error. Please check your credentials and try again.");
