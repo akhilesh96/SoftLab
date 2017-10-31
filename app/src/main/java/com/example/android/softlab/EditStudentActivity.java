@@ -37,7 +37,7 @@ public class EditStudentActivity extends AppCompatActivity {
     LinearLayout orLL;
     ProgressBar progressBar;
     int type;
-    String regNo1,course1,name1,fname1,mname1,address1,state1,city1,pno1,sex1,dob1,email1;
+    String regNo1,course1,name1,fname1,mname1,address1,state1,city1,pno1,sex1,dob1,email1,district1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -249,7 +249,7 @@ public class EditStudentActivity extends AppCompatActivity {
             try{
                 BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent(), "UTF-8"));
                 String json = reader.readLine();
-                jsonObject = new JSONObject(json);
+                jsonObject = new JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
                 Log.d("abcd",jsonObject.getString("status"));
 
             } catch(Exception e){
@@ -297,7 +297,7 @@ public class EditStudentActivity extends AppCompatActivity {
         try
         {
             HttpClient httpClient=new DefaultHttpClient();
-            HttpPost httpPost=new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/EditStudent");
+            HttpPost httpPost=new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/UpdateInfo");
 
             List<NameValuePair> list=new ArrayList<NameValuePair>();
             if(type==1){
@@ -320,7 +320,10 @@ public class EditStudentActivity extends AppCompatActivity {
             try{
                 BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent(), "UTF-8"));
                 String json = reader.readLine();
-                jsonObject = new JSONObject(json);
+                Log.d("json",json);
+//                jsonObject = new JSONObject(json);
+                jsonObject = new JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
+
                 Log.d("abcd",jsonObject.getString("status"));
 
             } catch(Exception e){
@@ -344,6 +347,7 @@ public class EditStudentActivity extends AppCompatActivity {
                 sex1=jsonObject.getString("sex");
                 dob1=jsonObject.getString("dob");
                 email1=jsonObject.getString("email");
+                district1=jsonObject.getString("district");
 
 
 //                showToast("Succesufully Deleted");
@@ -358,6 +362,7 @@ public class EditStudentActivity extends AppCompatActivity {
     }
 
     void launchUpdateActivity(String s){
+        Log.d("launch",s);
         if(s.equals("success")){
             Intent intent = new Intent(this, UpdateStudentActivity.class);
             intent.putExtra("regNo",regNo1);
@@ -372,7 +377,7 @@ public class EditStudentActivity extends AppCompatActivity {
             intent.putExtra("sex",sex1);
             intent.putExtra("dob",dob1);
             intent.putExtra("email",email1);
-
+            intent.putExtra("district",district1);
             startActivity(intent);
             finish();
         }

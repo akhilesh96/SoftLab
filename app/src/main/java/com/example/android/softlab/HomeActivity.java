@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void editordeleteStudentInfo(View view){
+    public void editStudentInfo(View view){
         Toast.makeText(HomeActivity.this, "Edit", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, EditStudentActivity.class);
         startActivity(intent);

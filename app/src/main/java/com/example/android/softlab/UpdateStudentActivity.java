@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -26,13 +27,13 @@ import java.util.List;
 
 public class UpdateStudentActivity extends AppCompatActivity {
 
-    EditText regNo,course,name,fname,mname,address,district,city,state,pno,sex,dob,email;
-
+    EditText course,name,fname,mname,address,district,city,state,pno,sex,dob,email;
+    TextView regNo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_student);
-        regNo = (EditText)findViewById(R.id.upregNo);
+        setContentView(R.layout.activity_update_student);
+        regNo = (TextView) findViewById(R.id.upregNo);
         course=(EditText)findViewById(R.id.upcourse);
         name=(EditText)findViewById(R.id.upname);
         fname=(EditText)findViewById(R.id.upfathersName);
@@ -46,28 +47,28 @@ public class UpdateStudentActivity extends AppCompatActivity {
         dob=(EditText)findViewById(R.id.updob);
         email=(EditText)findViewById(R.id.upemail);
 
-        Intent intent=getIntent();
-
-        regNo.setText(intent.getStringExtra("regNo"));
-        course.setText(intent.getStringExtra("course"));
-        name.setText(intent.getStringExtra("name"));
-        fname.setText(intent.getStringExtra("fname"));
-        mname.setText(intent.getStringExtra("mname"));
-        address.setText(intent.getStringExtra("address"));
-        district.setText(intent.getStringExtra("district"));
-        city.setText(intent.getStringExtra("city"));
-        state.setText(intent.getStringExtra("state"));
-        pno.setText(intent.getStringExtra("pno"));
-        sex.setText(intent.getStringExtra("sex"));
-        dob.setText(intent.getStringExtra("dob"));
-        email.setText(intent.getStringExtra("email"));
+//        Intent intent=getIntent();
+        Log.d("UpdateActivity",getIntent().getStringExtra("regNo"));
+        regNo.setText(getIntent().getStringExtra("regNo"));
+        course.setText(getIntent().getStringExtra("course"));
+        name.setText(getIntent().getStringExtra("name"));
+        fname.setText(getIntent().getStringExtra("fname"));
+        mname.setText(getIntent().getStringExtra("mname"));
+        address.setText(getIntent().getStringExtra("address"));
+        district.setText(getIntent().getStringExtra("district"));
+        city.setText(getIntent().getStringExtra("city"));
+        state.setText(getIntent().getStringExtra("state"));
+        pno.setText(getIntent().getStringExtra("pno"));
+        sex.setText(getIntent().getStringExtra("sex"));
+        dob.setText(getIntent().getStringExtra("dob"));
+        email.setText(getIntent().getStringExtra("email"));
 
 
 
     }
 
     public void addStudent(View view){
-        Toast.makeText(this, "add student", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "add student", Toast.LENGTH_SHORT).show();
         String s1=regNo.getText().toString();
         String s2=course.getText().toString();
         String s3=name.getText().toString();
@@ -98,7 +99,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             //progess_msz.setVisibility(View.GONE);
-            Toast.makeText(UpdateStudentActivity.this, result,Toast.LENGTH_SHORT).show();
+//            Toast.makeText(UpdateStudentActivity.this, result,Toast.LENGTH_SHORT).show();
 
         }
 
@@ -109,7 +110,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
         try
         {
             HttpClient httpClient=new DefaultHttpClient();
-            HttpPost httpPost=new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/AddStudent");
+            HttpPost httpPost=new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/UpdateStudent");
 
             List<NameValuePair> list=new ArrayList<NameValuePair>();
             list.add(new BasicNameValuePair("regNo", valuse[0]));
@@ -135,7 +136,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
             try{
                 BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent(), "UTF-8"));
                 String json = reader.readLine();
-                jsonObject = new JSONObject(json);
+                jsonObject = new JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
                 Log.d("abcd",jsonObject.getString("status"));
 
             } catch(Exception e){
@@ -148,6 +149,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
                 finish();
+                showToast("Updation Successfull");
             }
             else{
                 showToast("Login Error. Please check your credentials and try again.");
