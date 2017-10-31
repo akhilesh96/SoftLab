@@ -28,12 +28,10 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void editStudentInfo(View view){
+    public void editordeleteStudentInfo(View view){
         Toast.makeText(HomeActivity.this, "Edit", Toast.LENGTH_SHORT).show();
-    }
-
-    public void deleteStudentInfo(View view){
-        Toast.makeText(HomeActivity.this, "Delete", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, EditStudentActivity.class);
+        startActivity(intent);
     }
 
     public void signOut(View view){

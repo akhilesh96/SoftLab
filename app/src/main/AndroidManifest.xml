@@ -28,7 +28,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterUser" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".AddStudentActivity"></activity>
+        <activity android:name=".AddStudentActivity" />
+        <activity android:name=".EditStudentActivity"></activity>
     </application>
 
 </manifest>

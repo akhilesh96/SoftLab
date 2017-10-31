@@ -28,17 +28,10 @@
         android:id="@+id/editStudentInfoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Student Info"
+        android:text="Edit / Delete Student Info"
         android:layout_margin="8dp"
         android:onClick="editStudentInfo"/>
 
-    <Button
-        android:id="@+id/deleteStudentInfoButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete Student Info"
-        android:layout_margin="8dp"
-        android:onClick="deleteStudentInfo"/>
 
     <Button
         android:id="@+id/SignOutButton"
