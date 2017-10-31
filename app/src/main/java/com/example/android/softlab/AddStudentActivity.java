@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -50,7 +51,7 @@ public class AddStudentActivity extends AppCompatActivity {
     }
 
     public void addStudent(View view){
-        Toast.makeText(this, "add student", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "add student", Toast.LENGTH_SHORT).show();
         String s1=regNo.getText().toString();
         String s2=course.getText().toString();
         String s3=name.getText().toString();
@@ -81,7 +82,9 @@ public class AddStudentActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             //progess_msz.setVisibility(View.GONE);
-            Toast.makeText(AddStudentActivity.this, result,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(AddStudentActivity.this, result,Toast.LENGTH_SHORT).show();
+            checkstatus(result);
+
 
         }
 
@@ -112,32 +115,22 @@ public class AddStudentActivity extends AppCompatActivity {
             httpPost.setEntity(new UrlEncodedFormEntity(list));
             HttpResponse httpResponse=  httpClient.execute(httpPost);
 
-            HttpEntity httpEntity=httpResponse.getEntity();
-//            s= readResponse(httpResponse);
             JSONObject jsonObject = null;
             try{
                 BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent(), "UTF-8"));
                 String json = reader.readLine();
-                jsonObject = new JSONObject(json);
+                Log.d("json",json);
+                jsonObject = new JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
                 Log.d("abcd",jsonObject.getString("status"));
+                s=jsonObject.getString("status");
+                Log.d("svalue",s);
 
             } catch(Exception e){
                 e.printStackTrace();
             }
-
-            //user authentication successful
-            if(jsonObject.getString("status").equals("success")){
-//                prefManager.setIsSignedIn(true);
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-            else{
-               showToast("Login Error. Please check your credentials and try again.");
-            }
         }
         catch(Exception exception)  {
-            s="exception";
+            Log.d("a",exception.toString());
         }
         return s;
 
@@ -147,6 +140,18 @@ public class AddStudentActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
+    }
+    public void checkstatus(String status){
+        //user authentication successful
+        if(status.equals("success")){
+            showToast("Successfully added new student.");
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            showToast("Failed please try again.");
+        }
     }
     public void showToast(String msg){
         Toast.makeText(AddStudentActivity.this, msg, Toast.LENGTH_SHORT ).show();

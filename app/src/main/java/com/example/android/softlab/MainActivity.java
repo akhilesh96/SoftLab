@@ -92,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             progressBar.setVisibility(View.GONE);
             //progess_msz.setVisibility(View.GONE);
-            Toast.makeText(MainActivity.this, result,Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MainActivity.this, result,Toast.LENGTH_SHORT).show();
+            authenticate(result);
 
         }
 
@@ -119,49 +120,53 @@ public class MainActivity extends AppCompatActivity {
                 String json = reader.readLine();
                 jsonObject = new JSONObject(json);
                 Log.d("abcd",jsonObject.getString("status"));
+                s=jsonObject.getString("status");
+                Log.d("svalue",s);
 
             } catch(Exception e){
                 e.printStackTrace();
             }
 
-            //user authentication successful
-            if(jsonObject.getString("status").equals("success")){
-                prefManager.setIsSignedIn(true);
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-            else{
-                showToast("Login Error. Please check your credentials and try again.");
-            }
+
         }
         catch(Exception exception)  {
-            s="exception";
+            Log.d("a",exception.toString());
         }
         return s;
 
 
     }
-    public String readResponse(HttpResponse res) {
-        InputStream is=null;
-        String return_text="";
-        try {
-            is=res.getEntity().getContent();
-            BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
-            String line="";
-            StringBuffer sb=new StringBuffer();
-            while ((line=bufferedReader.readLine())!=null)
-            {
-                sb.append(line);
-            }
-            return_text=sb.toString();
-        } catch (Exception e)
-        {
-
+//    public String readResponse(HttpResponse res) {
+//        InputStream is=null;
+//        String return_text="";
+//        try {
+//            is=res.getEntity().getContent();
+//            BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
+//            String line="";
+//            StringBuffer sb=new StringBuffer();
+//            while ((line=bufferedReader.readLine())!=null)
+//            {
+//                sb.append(line);
+//            }
+//            return_text=sb.toString();
+//        } catch (Exception e)
+//        {
+//
+//        }
+//        return return_text;
+//    }
+    public void authenticate(String status){
+        //user authentication successful
+        if(status.equals("Success")){
+            prefManager.setIsSignedIn(true);
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
         }
-        return return_text;
+        else{
+            showToast("Login Error. Please check your credentials and try again.");
+        }
     }
-
     public void showToast(String msg){
         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT ).show();
     }
