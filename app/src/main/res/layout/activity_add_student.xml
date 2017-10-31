@@ -106,7 +106,7 @@
                 android:layout_margin="8dp"
                 />
 
-            <EditText
+            <Button
                 android:id="@+id/dob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -1,11 +1,13 @@
 package com.example.android.softlab;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,7 +27,8 @@ import java.util.List;
 
 public class AddStudentActivity extends AppCompatActivity {
 
-    EditText regNo,course,name,fname,mname,address,district,city,state,pno,sex,dob,email;
+    EditText regNo,course,name,fname,mname,address,district,city,state,pno,sex,email;
+    Button dob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,14 @@ public class AddStudentActivity extends AppCompatActivity {
         state=(EditText)findViewById(R.id.state);
         pno=(EditText)findViewById(R.id.phoneNumber);
         sex=(EditText)findViewById(R.id.sex);
-        dob=(EditText)findViewById(R.id.dob);
+        dob=(Button)findViewById(R.id.dob);
+        dob.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                DateDialog dialog = new DateDialog(view);
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                dialog.show(ft, "DatePicker");
+            }
+        });
         email=(EditText)findViewById(R.id.email);
 
 
@@ -97,7 +107,7 @@ public class AddStudentActivity extends AppCompatActivity {
 
             List<NameValuePair> list=new ArrayList<NameValuePair>();
             list.add(new BasicNameValuePair("regNo", valuse[0]));
-            list.add(new BasicNameValuePair("course",valuse[1]));
+            list.add(new BasicNameValuePair("course",valuse[1 ]));
             list.add(new BasicNameValuePair("name",valuse[2]));
             list.add(new BasicNameValuePair("fname",valuse[3]));
             list.add(new BasicNameValuePair("mname",valuse[4]));

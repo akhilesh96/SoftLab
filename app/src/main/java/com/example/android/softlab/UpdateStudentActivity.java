@@ -1,11 +1,13 @@
 package com.example.android.softlab;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +29,8 @@ import java.util.List;
 
 public class UpdateStudentActivity extends AppCompatActivity {
 
-    EditText course,name,fname,mname,address,district,city,state,pno,sex,dob,email;
+    EditText course,name,fname,mname,address,district,city,state,pno,sex,email;
+    Button dob;
     TextView regNo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,21 @@ public class UpdateStudentActivity extends AppCompatActivity {
         state=(EditText)findViewById(R.id.upstate);
         pno=(EditText)findViewById(R.id.upphoneNumber);
         sex=(EditText)findViewById(R.id.upsex);
-        dob=(EditText)findViewById(R.id.updob);
+        dob=(Button)findViewById(R.id.updob);
+        dob.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                DateDialog dialog = new DateDialog(view);
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                dialog.show(ft, "DatePicker");
+            }
+        });
+//        dob.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                DateDialog dialog = new DateDialog(view);
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                dialog.show(ft, "DatePicker");
+//            }
+//        });
         email=(EditText)findViewById(R.id.upemail);
 
 //        Intent intent=getIntent();
