@@ -37,6 +37,7 @@ public class EditStudentActivity extends AppCompatActivity {
     LinearLayout orLL;
     ProgressBar progressBar;
     int type;
+    String regNo1,course1,name1,fname1,mname1,address1,state1,city1,pno1,sex1,dob1,email1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,7 +206,16 @@ public class EditStudentActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             progressBar.setVisibility(View.GONE);
             //progess_msz.setVisibility(View.GONE);
-            Toast.makeText(EditStudentActivity.this, result,Toast.LENGTH_SHORT).show();
+            if(result.equals("success")){
+                Intent intent = new Intent(EditStudentActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+                showToast("Succesufully Deleted");
+            }
+            else{
+                showToast("Deletetion Error. Please try again.");
+            }
+//            Toast.makeText(EditStudentActivity.this, result,Toast.LENGTH_SHORT).show();
 
         }
 
@@ -246,16 +256,10 @@ public class EditStudentActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            s=jsonObject.getString("status");
+
             //user authentication successful
-            if(jsonObject.getString("status").equals("success")){
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-                showToast("Succesufully Deleted");
-            }
-            else{
-                showToast("Deletetion Error. Please check your credentials and try again.");
-            }
+
         }
         catch(Exception exception)  {
             s="exception";
@@ -263,25 +267,6 @@ public class EditStudentActivity extends AppCompatActivity {
         return s;
 
 
-    }
-    public String readResponse(HttpResponse res) {
-        InputStream is=null;
-        String return_text="";
-        try {
-            is=res.getEntity().getContent();
-            BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
-            String line="";
-            StringBuffer sb=new StringBuffer();
-            while ((line=bufferedReader.readLine())!=null)
-            {
-                sb.append(line);
-            }
-            return_text=sb.toString();
-        } catch (Exception e)
-        {
-
-        }
-        return return_text;
     }
 
 
@@ -291,7 +276,7 @@ public class EditStudentActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            String res=deletePostData(params);
+            String res=editPostData(params);
 
             return res;
         }
@@ -300,7 +285,8 @@ public class EditStudentActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             progressBar.setVisibility(View.GONE);
             //progess_msz.setVisibility(View.GONE);
-            Toast.makeText(EditStudentActivity.this, result,Toast.LENGTH_SHORT).show();
+//            Toast.makeText(EditStudentActivity.this, result,Toast.LENGTH_SHORT).show();
+            launchUpdateActivity(result);
 
         }
 
@@ -342,29 +328,26 @@ public class EditStudentActivity extends AppCompatActivity {
             }
 
             //user authentication successful
-            if(jsonObject.getString("status").equals("success")){
+            s=jsonObject.getString("status");
 
-                Intent intent = new Intent(this, UpdateStudentActivity.class);
-                intent.putExtra("regNo",jsonObject.getString("regNo"));
-                intent.putExtra("course",jsonObject.getString("course"));
-                intent.putExtra("name",jsonObject.getString("name"));
-                intent.putExtra("fname",jsonObject.getString("fname"));
-                intent.putExtra("mname",jsonObject.getString("mname"));
-                intent.putExtra("address",jsonObject.getString("address"));
-                intent.putExtra("state",jsonObject.getString("state"));
-                intent.putExtra("city",jsonObject.getString("city"));
-                intent.putExtra("pno",jsonObject.getString("pno"));
-                intent.putExtra("sex",jsonObject.getString("sex"));
-                intent.putExtra("dob",jsonObject.getString("dob"));
-                intent.putExtra("email",jsonObject.getString("email"));
 
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(this, UpdateStudentActivity.class);
+                regNo1=jsonObject.getString("regNo");
+                course1=jsonObject.getString("course");
+                name1=jsonObject.getString("name");
+                fname1=jsonObject.getString("fname");
+                mname1=jsonObject.getString("mname");
+                address1=jsonObject.getString("address");
+                state1=jsonObject.getString("state");
+                city1=jsonObject.getString("city");
+                pno1=jsonObject.getString("pno");
+                sex1=jsonObject.getString("sex");
+                dob1=jsonObject.getString("dob");
+                email1=jsonObject.getString("email");
+
+
 //                showToast("Succesufully Deleted");
-            }
-            else{
-                showToast("Error. Please check your credentials and try again.");
-            }
+
         }
         catch(Exception exception)  {
             s="exception";
@@ -374,6 +357,30 @@ public class EditStudentActivity extends AppCompatActivity {
 
     }
 
+    void launchUpdateActivity(String s){
+        if(s.equals("success")){
+            Intent intent = new Intent(this, UpdateStudentActivity.class);
+            intent.putExtra("regNo",regNo1);
+            intent.putExtra("course",course1);
+            intent.putExtra("name",name1);
+            intent.putExtra("fname",fname1);
+            intent.putExtra("mname",mname1);
+            intent.putExtra("address",address1);
+            intent.putExtra("state",state1);
+            intent.putExtra("city",city1);
+            intent.putExtra("pno",pno1);
+            intent.putExtra("sex",sex1);
+            intent.putExtra("dob",dob1);
+            intent.putExtra("email",email1);
+
+            startActivity(intent);
+            finish();
+        }
+        else{
+            showToast("Inavalid Credentials");
+        }
+
+    }
 
 
     public void showToast(String msg){
