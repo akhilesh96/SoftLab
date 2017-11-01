@@ -121,8 +121,16 @@ public class UpdateStudentActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             //progess_msz.setVisibility(View.GONE);
-//            Toast.makeText(UpdateStudentActivity.this, result,Toast.LENGTH_SHORT).show();
+            if (result.equals("success")){
+                showToast("Updation Successfull");
+            Intent intent = new Intent(UpdateStudentActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
 
+             }
+            else{
+                showToast("Login Error. Please check your credentials and try again.");
+            }
         }
 
     }
@@ -166,17 +174,9 @@ public class UpdateStudentActivity extends AppCompatActivity {
             }
 
             //user authentication successful
-            if(jsonObject.getString("status").equals("success")){
+            s=jsonObject.getString("status");
 //                prefManager.setIsSignedIn(true);
-                showToast("Updation Successfull");
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
-                finish();
 
-            }
-            else{
-                showToast("Login Error. Please check your credentials and try again.");
-            }
         }
         catch(Exception exception)  {
             s="exception";

@@ -443,7 +443,7 @@ public class EditStudentActivity extends AppCompatActivity {
     void launchUpdateActivity(String s){
         Log.d("launch",s);
         if(s.equals("success")){
-            showToast("Update Sucessful");
+//            showToast("Update Sucessful");
             Intent intent = new Intent(this, UpdateStudentActivity.class);
             intent.putExtra("regNo",regNo1);
             intent.putExtra("course",course1);
