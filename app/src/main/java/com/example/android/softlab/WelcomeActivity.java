@@ -13,6 +13,7 @@ public class WelcomeActivity extends Activity {
 
     // Splash screen timer
     private static int SPLASH_TIME_OUT = 1000;
+    //just for testing
 
     PrefManager prefManager;
 
