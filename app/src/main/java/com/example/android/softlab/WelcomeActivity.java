@@ -9,7 +9,7 @@ import android.os.Handler;
  * Created by Akhilesh on 10/31/2017.
  */
 
-public class WelcomeActivity extends Activity{
+public class WelcomeActivity extends Activity {
 
     // Splash screen timer
     private static int SPLASH_TIME_OUT = 1000;
@@ -31,11 +31,10 @@ public class WelcomeActivity extends Activity{
             @Override
             public void run() {
 
-                if(prefManager.isSignedIn()){
+                if (prefManager.isSignedIn()) {
                     Intent i = new Intent(WelcomeActivity.this, HomeActivity.class);
                     startActivity(i);
-                }
-                else{
+                } else {
                     Intent i = new Intent(WelcomeActivity.this, MainActivity.class);
                     startActivity(i);
                 }

@@ -1,45 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.android.softlab.HomeActivity"
-    android:padding="24dp">
+    android:padding="24dp"
+    tools:context="com.example.android.softlab.HomeActivity">
 
     <Button
         android:id="@+id/viewStudentInfoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="View Student Info"
         android:layout_margin="8dp"
-        android:onClick="viewStudentInfo"/>
+        android:onClick="viewStudentInfo"
+        android:text="View Student Info" />
 
     <Button
         android:id="@+id/addStudentInfoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Student Info"
         android:layout_margin="8dp"
-        android:onClick="addStudentInfo"/>
+        android:onClick="addStudentInfo"
+        android:text="Add Student Info" />
 
     <Button
         android:id="@+id/editStudentInfoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit / Delete Student Info"
         android:layout_margin="8dp"
-        android:onClick="editStudentInfo"/>
+        android:onClick="editStudentInfo"
+        android:text="Edit / Delete Student Info" />
 
 
     <Button
         android:id="@+id/SignOutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Out"
         android:layout_margin="8dp"
         android:backgroundTint="@android:color/holo_orange_light"
-        android:onClick="signOut"/>
+        android:onClick="signOut"
+        android:text="Sign Out" />
 
 </LinearLayout>

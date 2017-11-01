@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-    android:layout_gravity="center"
-tools:context="com.example.android.softlab.WelcomeActivity">
-
-
-<TextView
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:textSize="40sp"
-    android:textColor="@color/colorAccent"
-    android:text="Student Information Management" />
+    android:layout_gravity="center"
+    tools:context="com.example.android.softlab.WelcomeActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Student Information Management"
+        android:textColor="@color/colorAccent"
+        android:textSize="40sp" />
 
 </RelativeLayout>

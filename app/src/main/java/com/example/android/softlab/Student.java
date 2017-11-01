@@ -19,12 +19,12 @@ public class Student {
     String dob;
     String email;
 
-    public Student(){
+    public Student() {
 
     }
 
     public Student(String regNo, String course, String name, String fname, String mname, String address, String district,
-            String state, String city, String phoneNo, String sex, String dob, String email){
+                   String state, String city, String phoneNo, String sex, String dob, String email) {
 
         this.regNo = regNo;
         this.course = course;

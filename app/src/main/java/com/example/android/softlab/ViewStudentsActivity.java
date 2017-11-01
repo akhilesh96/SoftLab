@@ -1,18 +1,15 @@
 package com.example.android.softlab;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -21,13 +18,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class ViewStudentsActivity extends AppCompatActivity {
@@ -36,6 +31,7 @@ public class ViewStudentsActivity extends AppCompatActivity {
     List<Student> students;
     StudentAdapter adapter;
     ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,25 +52,7 @@ public class ViewStudentsActivity extends AppCompatActivity {
 
         });
 
-        new ExecuteTask().execute("test","test");
-
-    }
-
-    class ExecuteTask extends AsyncTask<String, Integer, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            String res = PostData(params);
-
-            return res;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-//            showToast(result);
-            addStudents(result);
-        }
+        new ExecuteTask().execute("test", "test");
 
     }
 
@@ -94,7 +72,7 @@ public class ViewStudentsActivity extends AppCompatActivity {
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent(), "UTF-8"));
                 String json = reader.readLine();
-                s=json;
+                s = json;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -106,19 +84,19 @@ public class ViewStudentsActivity extends AppCompatActivity {
         return s;
     }
 
-    public void addStudents(String json){
+    public void addStudents(String json) {
         JSONArray jsonArray;
         JSONObject jsonObject;
-        Log.d("result",json);
+        Log.d("result", json);
         try {
             jsonArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
-            for(int i=0;i<jsonArray.length()-1;i++){
+            for (int i = 0; i < jsonArray.length() - 1; i++) {
                 Log.d("ivalue", jsonArray.getJSONObject(i).getString("name"));
                 jsonObject = jsonArray.getJSONObject(i);
-                if(jsonObject.isNull("status") == true){
+                if (jsonObject.isNull("status") == true) {
                     Student temp = null;
-                    try{
-                        temp = new Student (
+                    try {
+                        temp = new Student(
                                 jsonObject.getString("regNo"),
                                 jsonObject.getString("course"),
                                 jsonObject.getString("name"),
@@ -134,8 +112,7 @@ public class ViewStudentsActivity extends AppCompatActivity {
                                 jsonObject.getString("email")
                         );
                         students.add(temp);
-                    }
-                    catch ( Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -144,8 +121,7 @@ public class ViewStudentsActivity extends AppCompatActivity {
             listView.setAdapter(adapter);
             progressBar.setVisibility(View.GONE);
 
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -153,5 +129,23 @@ public class ViewStudentsActivity extends AppCompatActivity {
 
     public void showToast(String msg) {
         Toast.makeText(ViewStudentsActivity.this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    class ExecuteTask extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String res = PostData(params);
+
+            return res;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+//            showToast(result);
+            addStudents(result);
+        }
+
     }
 }

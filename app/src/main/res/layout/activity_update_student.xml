@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -24,13 +24,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Registration No. :"/>
+                    android:text="Registration No. :" />
+
                 <TextView
                     android:id="@+id/upregNo"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:layout_weight="1"
 
                     />
 
@@ -45,15 +46,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Course"/>
+                    android:text="Course" />
+
                 <EditText
                     android:id="@+id/upcourse"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="Course :"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    />
+                    android:hint="Course :" />
 
             </LinearLayout>
 
@@ -66,19 +67,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Name :"/>
+                    android:text="Name :" />
 
                 <EditText
                     android:id="@+id/upname"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="Name" />
 
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -90,19 +89,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Father's Name :"/>
+                    android:text="Father's Name :" />
 
                 <EditText
                     android:id="@+id/upfathersName"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="Father's Name"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="Father's Name" />
 
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -114,19 +111,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Mother's Name :"/>
+                    android:text="Mother's Name :" />
 
                 <EditText
                     android:id="@+id/upmothersName"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="Mother's Name"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="Mother's Name" />
 
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -138,18 +133,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Address :"/>
+                    android:text="Address :" />
+
                 <EditText
                     android:id="@+id/upaddrss"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="Address"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="Address" />
 
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -161,15 +155,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="District :"/>
+                    android:text="District :" />
+
                 <EditText
                     android:id="@+id/updistrict"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="District"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="District" />
 
             </LinearLayout>
 
@@ -183,16 +177,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="State :"/>
+                    android:text="State :" />
 
                 <EditText
                     android:id="@+id/upstate"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="State"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="State" />
             </LinearLayout>
 
 
@@ -205,16 +198,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="City :"/>
+                    android:text="City :" />
 
                 <EditText
                     android:id="@+id/upcity"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="City"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="City" />
 
             </LinearLayout>
 
@@ -228,17 +220,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Phone Number :"/>
+                    android:text="Phone Number :" />
 
                 <EditText
                     android:id="@+id/upphoneNumber"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="Phone Number"
                     android:layout_margin="8dp"
-                    android:inputType="number"
-                    />
+                    android:layout_weight="1"
+                    android:hint="Phone Number"
+                    android:inputType="number" />
             </LinearLayout>
 
 
@@ -251,15 +242,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Sex :"/>
+                    android:text="Sex :" />
+
                 <EditText
                     android:id="@+id/upsex"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="Sex (M / F)"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="Sex (M / F)" />
 
             </LinearLayout>
 
@@ -273,16 +264,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="DOB :"/>
+                    android:text="DOB :" />
 
                 <Button
                     android:id="@+id/updob"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="Date of Birth (DD / MM / YYYY)"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="Date of Birth (DD / MM / YYYY)" />
 
             </LinearLayout>
 
@@ -296,25 +286,25 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Email :"/>
+                    android:text="Email :" />
+
                 <EditText
                     android:id="@+id/upemail"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="Email"
                     android:layout_margin="8dp"
-                    />
+                    android:layout_weight="1"
+                    android:hint="Email" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="* All the fields are mandatory"
                 android:layout_gravity="right"
                 android:layout_margin="8dp"
-                android:textColor="@android:color/holo_red_dark"/>
+                android:text="* All the fields are mandatory"
+                android:textColor="@android:color/holo_red_dark" />
         </LinearLayout>
 
 
@@ -326,22 +316,22 @@
             <Button
                 android:id="@+id/upcancelButton"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Cancel"
-                android:backgroundTint="@android:color/holo_orange_light"
                 android:layout_margin="16dp"
-                android:onClick="cancel"/>
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:onClick="cancel"
+                android:text="Cancel" />
 
 
             <Button
                 android:id="@+id/upaddButton"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Update"
                 android:layout_margin="16dp"
-                android:onClick="addStudent"/>
+                android:layout_weight="1"
+                android:onClick="addStudent"
+                android:text="Update" />
 
         </LinearLayout>
 
