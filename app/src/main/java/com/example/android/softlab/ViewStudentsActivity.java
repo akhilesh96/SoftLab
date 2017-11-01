@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -32,36 +33,17 @@ import java.util.List;
 public class ViewStudentsActivity extends AppCompatActivity {
 
     ListView listView;
-
+    List<Student> students;
+    StudentAdapter adapter;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_students);
         listView = (ListView) findViewById(R.id.studentsListView);
-        final StudentAdapter adapter;
-        List<Student> students = new ArrayList<>();
-        Student temp = null;
-
-        temp = new Student(
-                "83", "course",
-                "pk", "f",
-                "m", "add",
-                "dist", "state",
-                "city", "87123",
-                "M", "26/10/1996", "email");
-
-
-        students.add(temp);
-        temp = new Student(
-                "100", "course",
-                "at", "f",
-                "m", "add",
-                "dist", "state",
-                "city", "87123",
-                "M", "26/10/1996", "email");
-
-
-        students.add(temp);
+        progressBar = (ProgressBar) findViewById(R.id.studentsProgressBar);
+        progressBar.setVisibility(View.VISIBLE);
+        students = new ArrayList<>();
         adapter = new StudentAdapter(ViewStudentsActivity.this, students);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -112,12 +94,7 @@ public class ViewStudentsActivity extends AppCompatActivity {
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent(), "UTF-8"));
                 String json = reader.readLine();
-                jsonObject = new JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
-                s=jsonObject.toString();
-//                jsonArray = new JSONArray(json);
-//                jsonArray = new JSONArray(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
-//                s = jsonArray.toString();
-
+                s=json;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -127,24 +104,50 @@ public class ViewStudentsActivity extends AppCompatActivity {
             Log.d("a", exception.toString());
         }
         return s;
-
-
     }
 
     public void addStudents(String json){
+        JSONArray jsonArray;
         JSONObject jsonObject;
-        JSONObject[] studs;
-        try{
-            jsonObject = new JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
-            Log.d("jsonch",jsonObject.toString());
-            //todo: extract students and add to list view
+        Log.d("result",json);
+        try {
+            jsonArray = new JSONArray(json.substring(json.indexOf("["), json.lastIndexOf("]") + 1));
+            for(int i=0;i<jsonArray.length()-1;i++){
+                Log.d("ivalue", jsonArray.getJSONObject(i).getString("name"));
+                jsonObject = jsonArray.getJSONObject(i);
+                if(jsonObject.isNull("status") == true){
+                    Student temp = null;
+                    try{
+                        temp = new Student (
+                                jsonObject.getString("regNo"),
+                                jsonObject.getString("course"),
+                                jsonObject.getString("name"),
+                                jsonObject.getString("fname"),
+                                jsonObject.getString("mname"),
+                                jsonObject.getString("address"),
+                                jsonObject.getString("district"),
+                                jsonObject.getString("state"),
+                                jsonObject.getString("city"),
+                                jsonObject.getString("pno"),
+                                jsonObject.getString("sex"),
+                                jsonObject.getString("dob"),
+                                jsonObject.getString("email")
+                        );
+                        students.add(temp);
+                    }
+                    catch ( Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+            adapter = new StudentAdapter(ViewStudentsActivity.this, students);
+            listView.setAdapter(adapter);
+            progressBar.setVisibility(View.GONE);
 
-
+        }catch(Exception e)
+        {
+            e.printStackTrace();
         }
-        catch(JSONException e){
-
-        }
-
 
     }
 

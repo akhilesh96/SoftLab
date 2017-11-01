@@ -19,7 +19,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void viewStudentInfo(View view){
-        Toast.makeText(HomeActivity.this, "View", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(HomeActivity.this, "View", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(HomeActivity.this, ViewStudentsActivity.class);
         startActivity(intent);
     }
