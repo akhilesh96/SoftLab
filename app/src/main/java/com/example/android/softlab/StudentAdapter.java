@@ -1,36 +1,59 @@
 package com.example.android.softlab;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pk on 10/31/2017.
  */
 
-public class StudentAdapter extends ArrayAdapter<String> {
+public class StudentAdapter extends ArrayAdapter<Student> {
 
     private final Context context;
-    private final String[] values;
 
-    public StudentAdapter(Context context, String[] values){
-        super(context, -1, values);
+    public StudentAdapter(Context context, List<Student> students) {
+        super(context, 0, students);
         this.context = context;
-        this.values = values;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.studentinfo_layout, parent, false);
+
+        View listItemView = convertView;
+        if (listItemView == null) {
+            listItemView = LayoutInflater.from(getContext()).inflate(
+                    R.layout.studentinfo_layout, parent, false);
+        }
+
+        Student currentStudent = getItem(position);
+
+        TextView regno, sname, course, pno;
+        regno = (TextView) listItemView.findViewById(R.id.studentRegNo);
+        sname = (TextView) listItemView.findViewById(R.id.studentName);
+        course = (TextView) listItemView.findViewById(R.id.studentCourse);
+        pno = (TextView) listItemView.findViewById(R.id.studentPhoneNumber);
 
 
+        regno.setText(currentStudent.getRegNo());
+        sname.setText(currentStudent.getName());
+        course.setText(currentStudent.getCourse());
+        pno.setText(currentStudent.getPhoneNo());
 
 
-        return rowView;
+        return listItemView;
     }
+
 
 }

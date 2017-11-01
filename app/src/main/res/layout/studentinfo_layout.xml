@@ -5,8 +5,101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context="com.example.android.softlab.HomeActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Reg No."/>
+
+        <TextView
+            android:id="@+id/studentRegNo"
+            android:textAlignment="textEnd"
+            android:textSize="16sp"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/primary_text_light"
+            android:text="Student Registration Number"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Name"/>
+
+        <TextView
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:layout_weight="2"
+            android:id="@+id/studentName"
+            android:textColor="@android:color/primary_text_light"
+            android:text="Course"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Course"/>
+
+        <TextView
+            android:id="@+id/studentCourse"
+            android:textSize="16sp"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/primary_text_light"
+            android:layout_height="wrap_content"
+            android:text="Student Registration Number"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:textSize="16sp"
+            android:textAlignment="textEnd"
+            android:layout_height="wrap_content"
+            android:id="@+id/studentPhoneNumber"
+            android:text="Phone Number"
+            android:layout_weight="2"
+            android:textColor="@android:color/primary_text_light"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"/>
 
 </LinearLayout>
