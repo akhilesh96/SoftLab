@@ -32,6 +32,7 @@
         <activity android:name=".EditStudentActivity" />
         <activity android:name=".UpdateStudentActivity" />
         <activity android:name=".ViewStudentsActivity"></activity>
+        <activity android:name=".RetrieveStudent"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.android.softlab;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -161,6 +162,35 @@ public class EditStudentActivity extends AppCompatActivity {
         }
     }
 
+    public void retrieveStudent(View view) {
+        String regno,name,phone;
+        regno=regNoEditText.getText().toString();
+        name=nameEditText.getText().toString();
+        phone=phoneEditText.getText().toString();
+
+        if(regno.length()==0){
+            if(name.length()==0 || phone.length()==0){
+                type=0;
+            }
+            else{
+                type=-1;
+            }
+        }
+        else{
+            type=1;
+        }
+        if(type==1){
+            new RetrieveExecuteTask().execute(regno);
+        }
+        else if(type==-1){
+            new RetrieveExecuteTask().execute(name,phone);
+        }
+        else{
+            Toast.makeText(EditStudentActivity.this," "+type+" ",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     public void editStudent(View view) {
         String regno,name,phone;
         regno=regNoEditText.getText().toString();
@@ -269,6 +299,28 @@ public class EditStudentActivity extends AppCompatActivity {
 
     }
 
+    class RetrieveExecuteTask extends AsyncTask<String, Integer, String>
+    {
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String res=editPostData(params);
+
+            return res;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            progressBar.setVisibility(View.GONE);
+            //progess_msz.setVisibility(View.GONE);
+//            Toast.makeText(EditStudentActivity.this, result,Toast.LENGTH_SHORT).show();
+            launchRetrieveActivity(result);
+
+        }
+
+    }
+
 
     class EditExecuteTask extends AsyncTask<String, Integer, String>
     {
@@ -360,6 +412,33 @@ public class EditStudentActivity extends AppCompatActivity {
 
 
     }
+
+    void launchRetrieveActivity(String s){
+        Log.d("launch",s);
+        if(s.equals("success")){
+            Intent intent = new Intent(this, RetrieveStudent.class);
+            intent.putExtra("regNo",regNo1);
+            intent.putExtra("course",course1);
+            intent.putExtra("name",name1);
+            intent.putExtra("fname",fname1);
+            intent.putExtra("mname",mname1);
+            intent.putExtra("address",address1);
+            intent.putExtra("state",state1);
+            intent.putExtra("city",city1);
+            intent.putExtra("pno",pno1);
+            intent.putExtra("sex",sex1);
+            intent.putExtra("dob",dob1);
+            intent.putExtra("email",email1);
+            intent.putExtra("district",district1);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            showToast("Inavalid Credentials");
+        }
+
+    }
+
 
     void launchUpdateActivity(String s){
         Log.d("launch",s);

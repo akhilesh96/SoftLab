@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        android:id="@+id/linearLayout">
 
 
 
@@ -122,6 +123,16 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@id/buttonLL"/>
 
+    <Button
+        android:id="@+id/retrievestudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttonLL"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:layout_marginEnd="31dp"
+        android:text="Retrieve"
+        android:layout_alignParentRight="true"
+        android:onClick="retrieveStudent"/>
 
 
 </RelativeLayout>
