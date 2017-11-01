@@ -15,119 +15,298 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/upregNo"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upcourse"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Registration No. :"/>
+                <TextView
+                    android:id="@+id/upregNo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Course"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upname"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Course"/>
+                <TextView
+                    android:id="@+id/upcourse"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Course :"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upfathersName"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name :"/>
+
+                <TextView
+                    android:id="@+id/upname"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:layout_margin="8dp"
+                    />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Father's Name"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upmothersName"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Father's Name :"/>
+
+                <TextView
+                    android:id="@+id/upfathersName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Father's Name"
+                    android:layout_margin="8dp"
+                    />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mother's Name"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upaddrss"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Mother's Name :"/>
+
+                <TextView
+                    android:id="@+id/upmothersName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Mother's Name"
+                    android:layout_margin="8dp"
+                    />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Address"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/updistrict"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Address :"/>
+                <TextView
+                    android:id="@+id/upaddrss"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Address"
+                    android:layout_margin="8dp"
+                    />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="District"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upstate"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="District :"/>
+                <TextView
+                    android:id="@+id/updistrict"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="District"
+                    android:layout_margin="8dp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="State"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upcity"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="State :"/>
+
+                <TextView
+                    android:id="@+id/upstate"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="State"
+                    android:layout_margin="8dp"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="City"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upphoneNumber"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="City :"/>
+
+                <TextView
+                    android:id="@+id/upcity"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="City"
+                    android:layout_margin="8dp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Phone Number"
-                android:layout_margin="8dp"
-                android:inputType="number"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upsex"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Phone Number :"/>
+
+                <TextView
+                    android:id="@+id/upphoneNumber"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    android:layout_margin="8dp"
+                    android:inputType="number"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Sex (M / F)"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/updob"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sex :"/>
+                <TextView
+                    android:id="@+id/upsex"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Sex (M / F)"
+                    android:layout_margin="8dp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Date of Birth (DD / MM / YYYY)"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/upemail"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="DOB :"/>
+
+                <TextView
+                    android:id="@+id/updob"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Date of Birth (DD / MM / YYYY)"
+                    android:layout_margin="8dp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-                android:layout_margin="8dp"
-                />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Email :"/>
+                <TextView
+                    android:id="@+id/upemail"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:layout_margin="8dp"
+                    />
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
-
+            </LinearLayout>
 
 
         </LinearLayout>

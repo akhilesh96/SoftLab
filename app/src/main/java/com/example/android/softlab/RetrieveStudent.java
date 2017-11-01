@@ -48,20 +48,6 @@ public class RetrieveStudent extends AppCompatActivity {
         pno=(TextView) findViewById(R.id.upphoneNumber);
         sex=(TextView) findViewById(R.id.upsex);
         dob=(TextView)findViewById(R.id.updob);
-        dob.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-                DateDialog dialog = new DateDialog(view);
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                dialog.show(ft, "DatePicker");
-            }
-        });
-//        dob.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                DateDialog dialog = new DateDialog(view);
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                dialog.show(ft, "DatePicker");
-//            }
-//        });
         email=(TextView) findViewById(R.id.upemail);
 
 //        Intent intent=getIntent();

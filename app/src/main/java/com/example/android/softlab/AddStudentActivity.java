@@ -78,6 +78,9 @@ public class AddStudentActivity extends AppCompatActivity {
        if(validate()){
            new ExecuteTask().execute(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13);
        }
+       else{
+           showToast("Enter Valid Credentials");
+       }
     }
     class ExecuteTask extends AsyncTask<String, Integer, String>
     {
@@ -234,7 +237,7 @@ public class AddStudentActivity extends AppCompatActivity {
             sex.setError("This Field is Required");
             return false;
         }
-        if(sex.getText().toString()!="M" || sex.getText().toString()!="F" ){
+        if(!sex.getText().toString().equals("M") && !sex.getText().toString().equals("F") ){
             sex.setError("Enter M or F");
             return false;
         }

@@ -43,7 +43,7 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
             daystr = "0" + daystr;
         }
 
-        if (month <= 9) {
+        if (month < 9) {
             String date = year + "-0" + (month + 1) + "-" + daystr;
             txtdate.setText(date);
         } else {

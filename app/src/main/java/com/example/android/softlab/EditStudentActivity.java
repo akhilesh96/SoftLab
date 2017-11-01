@@ -215,7 +215,7 @@ public class EditStudentActivity extends AppCompatActivity {
             new EditExecuteTask().execute(name,phone);
         }
         else{
-            Toast.makeText(EditStudentActivity.this," "+type+" ",Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditStudentActivity.this,"Enter Credentials",Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -443,6 +443,7 @@ public class EditStudentActivity extends AppCompatActivity {
     void launchUpdateActivity(String s){
         Log.d("launch",s);
         if(s.equals("success")){
+            showToast("Update Sucessful");
             Intent intent = new Intent(this, UpdateStudentActivity.class);
             intent.putExtra("regNo",regNo1);
             intent.putExtra("course",course1);

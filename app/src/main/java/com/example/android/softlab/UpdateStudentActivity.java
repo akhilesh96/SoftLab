@@ -100,7 +100,12 @@ public class UpdateStudentActivity extends AppCompatActivity {
         String s12=dob.getText().toString();
         String s13=email.getText().toString();
 
-        new ExecuteTask().execute(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13);
+        if(validate()){
+            new ExecuteTask().execute(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13);
+        }
+        else{
+            showToast("Enter Valid Credentials");
+        }
     }
     class ExecuteTask extends AsyncTask<String, Integer, String>
     {
@@ -163,10 +168,11 @@ public class UpdateStudentActivity extends AppCompatActivity {
             //user authentication successful
             if(jsonObject.getString("status").equals("success")){
 //                prefManager.setIsSignedIn(true);
+                showToast("Updation Successfull");
                 Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
                 finish();
-                showToast("Updation Successfull");
+
             }
             else{
                 showToast("Login Error. Please check your credentials and try again.");
@@ -186,5 +192,91 @@ public class UpdateStudentActivity extends AppCompatActivity {
     }
     public void showToast(String msg){
         Toast.makeText(UpdateStudentActivity.this, msg, Toast.LENGTH_SHORT ).show();
+    }
+
+    boolean validate(){
+
+        regNo.setError(null);
+        course.setError(null);
+        name.setError(null);
+        fname.setError(null);
+        mname.setError(null);
+        address.setError(null);
+        city.setError(null);
+        district.setError(null);
+        state.setError(null);
+        sex.setError(null);
+        pno.setError(null);
+        dob.setError(null);
+        email.setError(null);
+
+
+        if(regNo.getText().toString().length()==0){
+            regNo.setError("This Field is Required");
+            return false;
+        }
+        if(course.getText().toString().length()==0){
+            course.setError("This Field is Required");
+            return false;
+        }
+        if(name.getText().toString().length()==0){
+            name.setError("This Field is Required");
+            return false;
+        }
+        if(fname.getText().toString().length()==0){
+            fname.setError("This Field is Required");
+            return false;
+        }
+        if(mname.getText().toString().length()==0){
+            mname.setError("This Field is Required");
+            return false;
+        }
+        if(address.getText().toString().length()==0){
+            address.setError("This Field is Required");
+            return false;
+        }
+        if(district.getText().toString().length()==0){
+            district.setError("This Field is Required");
+            return false;
+        }
+        if(city.getText().toString().length()==0){
+            city.setError("This Field is Required");
+            return false;
+        }
+        if(state.getText().toString().length()==0){
+            state.setError("This Field is Required");
+            return false;
+        }
+        if(regNo.getText().toString().length()==0){
+            regNo.setError("This Field is Required");
+            return false;
+        }
+        if(pno.getText().toString().length()==0){
+            pno.setError("This Field is Required");
+            return false;
+        }
+        if(pno.getText().toString().length()!=10){
+            pno.setError("Enter 10 digit number");
+            return false;
+        }
+        if(sex.getText().toString().length()==0){
+            sex.setError("This Field is Required");
+            return false;
+        }
+        if(!sex.getText().toString().equals("M") && !sex.getText().toString().equals("F") ){
+            sex.setError("Enter M or F");
+            return false;
+        }
+        if(dob.getText().toString().length()==0){
+            dob.setError("This Field is Required");
+
+            return false;
+        }
+        if(email.getText().toString().length()==0){
+            email.setError("This Field is Required");
+            return false;
+        }
+
+        return true;
     }
 }
