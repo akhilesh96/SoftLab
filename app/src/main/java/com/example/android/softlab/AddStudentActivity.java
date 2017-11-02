@@ -29,10 +29,15 @@ public class AddStudentActivity extends AppCompatActivity {
 
     EditText regNo, course, name, fname, mname, address, district, city, state, pno, sex, email;
     Button dob;
+    PrefManager pref;
+    String endpoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        pref = new PrefManager(AddStudentActivity.this);
+        endpoint=pref.getUrl();
         setContentView(R.layout.activity_add_student);
         regNo = (EditText) findViewById(R.id.regNo);
         course = (EditText) findViewById(R.id.course);
@@ -85,7 +90,7 @@ public class AddStudentActivity extends AppCompatActivity {
         String s = "";
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/AddStudent");
+            HttpPost httpPost = new HttpPost(endpoint+"AddStudent");
 
             List<NameValuePair> list = new ArrayList<NameValuePair>();
             list.add(new BasicNameValuePair("regNo", valuse[0]));

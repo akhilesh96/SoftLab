@@ -9,12 +9,14 @@ import android.widget.Toast;
 public class HomeActivity extends AppCompatActivity {
 
     PrefManager prefManager;
+    String endpoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         prefManager = new PrefManager(HomeActivity.this);
+        endpoint=prefManager.getUrl();
     }
 
     public void viewStudentInfo(View view) {

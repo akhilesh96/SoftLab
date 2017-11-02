@@ -34,12 +34,14 @@ public class MainActivity extends AppCompatActivity {
     Button login, resister;
     ProgressBar progressBar;
     PrefManager prefManager;
+    String endpoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         prefManager = new PrefManager(MainActivity.this);
+        endpoint=prefManager.getUrl();
         password = (EditText) findViewById(R.id.editText2);
         userName = (EditText) findViewById(R.id.editText1);
         login = (Button) findViewById(R.id.button1);
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         String s = "";
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/Login");
+            HttpPost httpPost = new HttpPost(endpoint+"Login");
 
             List<NameValuePair> list = new ArrayList<NameValuePair>();
             list.add(new BasicNameValuePair("name", valuse[0]));
@@ -95,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("abcd", jsonObject.getString("status"));
                 s = jsonObject.getString("status");
                 Log.d("svalue", s);
+
+                //temp bypass login
+//                s = "Success";
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -139,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
             showToast("Login Error. Please check your credentials and try again.");
         }
     }
+
 
     public void showToast(String msg) {
         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();

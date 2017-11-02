@@ -37,11 +37,17 @@ public class EditStudentActivity extends AppCompatActivity {
     ProgressBar progressBar;
     int type;
     String regNo1, course1, name1, fname1, mname1, address1, state1, city1, pno1, sex1, dob1, email1, district1;
+    PrefManager pref;
+    String endpoint;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_student);
+
+        pref = new PrefManager(EditStudentActivity.this);
+        endpoint=pref.getUrl();
         orLL = (LinearLayout) findViewById(R.id.orLL);
 
         regNoEditText = (EditText) findViewById(R.id.editRegNo);
@@ -58,31 +64,31 @@ public class EditStudentActivity extends AppCompatActivity {
 
         regNoEditText.addTextChangedListener(new TextWatcher() {
 
-                                                 @Override
-                                                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                                     if (s.length() != 0) {
-                                                         orLL.setVisibility(View.GONE);
-                                                         nameEditText.setVisibility(View.GONE);
-                                                         phoneEditText.setVisibility(View.GONE);
-                                                     } else {
-                                                         orLL.setVisibility(View.VISIBLE);
-                                                         nameEditText.setVisibility(View.VISIBLE);
-                                                         phoneEditText.setVisibility(View.VISIBLE);
+             @Override
+             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                 if (s.length() != 0) {
+                     orLL.setVisibility(View.GONE);
+                     nameEditText.setVisibility(View.GONE);
+                     phoneEditText.setVisibility(View.GONE);
+                 } else {
+                     orLL.setVisibility(View.VISIBLE);
+                     nameEditText.setVisibility(View.VISIBLE);
+                     phoneEditText.setVisibility(View.VISIBLE);
 
-                                                     }
-                                                 }
+                 }
+             }
 
-                                                 @Override
-                                                 public void beforeTextChanged(CharSequence s, int start, int count,
-                                                                               int after) {
-                                                     // TODO Auto-generated method stub
-                                                 }
+             @Override
+             public void beforeTextChanged(CharSequence s, int start, int count,
+                                           int after) {
+                 // TODO Auto-generated method stub
+             }
 
-                                                 @Override
-                                                 public void afterTextChanged(Editable s) {
+             @Override
+             public void afterTextChanged(Editable s) {
 
-                                                 }
-                                             }
+             }
+         }
 
 
         );
@@ -207,7 +213,7 @@ public class EditStudentActivity extends AppCompatActivity {
         String s = "";
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/DeleteStudent");
+            HttpPost httpPost = new HttpPost(endpoint+"DeleteStudent");
 
             List<NameValuePair> list = new ArrayList<NameValuePair>();
             if (type == 1) {
@@ -252,7 +258,7 @@ public class EditStudentActivity extends AppCompatActivity {
         String s = "";
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/UpdateInfo");
+            HttpPost httpPost = new HttpPost(endpoint+"UpdateInfo");
 
             List<NameValuePair> list = new ArrayList<NameValuePair>();
             if (type == 1) {
@@ -334,7 +340,7 @@ public class EditStudentActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else {
-            showToast("Inavalid Credentials");
+            showToast("Invalid Credentials");
         }
 
     }

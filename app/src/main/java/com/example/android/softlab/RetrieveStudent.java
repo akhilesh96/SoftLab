@@ -11,11 +11,16 @@ public class RetrieveStudent extends AppCompatActivity {
     TextView course, name, fname, mname, address, district, city, state, pno, sex, email;
     TextView dob;
     TextView regNo;
+    PrefManager pref;
+    String endpoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrieve_student);
+        pref = new PrefManager(RetrieveStudent.this);
+        endpoint=pref.getUrl();
+
         regNo = (TextView) findViewById(R.id.upregNo);
         course = (TextView) findViewById(R.id.upcourse);
         name = (TextView) findViewById(R.id.upname);

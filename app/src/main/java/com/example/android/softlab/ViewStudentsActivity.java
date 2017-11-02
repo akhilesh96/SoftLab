@@ -32,11 +32,15 @@ public class ViewStudentsActivity extends AppCompatActivity {
     List<Student> students;
     StudentAdapter adapter;
     ProgressBar progressBar;
+    PrefManager pref;
+    String endpoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_students);
+        pref = new PrefManager(ViewStudentsActivity.this);
+        endpoint=pref.getUrl();
         listView = (ListView) findViewById(R.id.studentsListView);
         progressBar = (ProgressBar) findViewById(R.id.studentsProgressBar);
         progressBar.setVisibility(View.VISIBLE);
@@ -73,7 +77,7 @@ public class ViewStudentsActivity extends AppCompatActivity {
         String s = "";
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://slab-env.us-west-2.elasticbeanstalk.com/StudentInfo");
+            HttpPost httpPost = new HttpPost(endpoint+"StudentInfo");
 
             List<NameValuePair> list = new ArrayList<NameValuePair>();
             list.add(new BasicNameValuePair("name", valuse[0]));

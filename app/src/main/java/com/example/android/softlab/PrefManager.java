@@ -12,9 +12,12 @@ public class PrefManager {
     // Shared preferences file name
     private static final String PREF_NAME = "softlab";
     private static final String IS_SIGNED_IN = "IsSignedIn";
+
+    private static final String URL = "URL";
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context _context;
+    private static final String endpoint="";
     // shared pref mode
     int PRIVATE_MODE = 0;
 
@@ -22,6 +25,12 @@ public class PrefManager {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
+        editor.putString(URL,"" );
+        editor.commit();
+    }
+
+    public String getUrl(){
+        return pref.getString(URL,endpoint);
     }
 
     public boolean isSignedIn() {
