@@ -25,12 +25,12 @@ public class PrefManager {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
-        editor.putString(URL,"" );
+        editor.putString(URL,endpoint );
         editor.commit();
     }
 
     public String getUrl(){
-        return pref.getString(URL,endpoint);
+        return pref.getString(URL,"");
     }
 
     public boolean isSignedIn() {
