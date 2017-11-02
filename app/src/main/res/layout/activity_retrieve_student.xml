@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,15 +25,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Registration No. :" />
+                    android:text="Registration No. " />
 
                 <TextView
                     android:id="@+id/upregNo"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-
+                    android:text="Registration No"
                     />
 
             </LinearLayout>
@@ -46,7 +48,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Course" />
+                    android:text="Course:" />
 
                 <TextView
                     android:id="@+id/upcourse"
@@ -54,7 +56,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="Course :" />
+                    android:text="Course"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 
@@ -75,7 +78,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="Name" />
+                    android:text="Name"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 
@@ -97,7 +101,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="Father's Name" />
+                    android:text="Father's Name"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 
@@ -119,7 +124,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="Mother's Name" />
+                    android:text="Mother's Name"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 
@@ -141,7 +147,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="Address" />
+                    android:text="Address"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 
@@ -163,7 +170,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="District" />
+                    android:text="District"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 
@@ -185,7 +193,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="State" />
+                    android:text="State"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
             </LinearLayout>
 
 
@@ -206,7 +215,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="City" />
+                    android:text="City"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 
@@ -228,8 +238,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="Phone Number"
-                    android:inputType="number" />
+                    android:text="Phone Number"
+                    android:inputType="number"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
             </LinearLayout>
 
 
@@ -250,7 +261,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="Sex (M / F)" />
+                    android:text="Sex (M / F)"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 
@@ -272,7 +284,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="Date of Birth (DD / MM / YYYY)" />
+                    android:text="Date of Birth (DD / MM / YYYY)"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 
@@ -294,7 +307,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:hint="Email" />
+                    android:text="Email"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             </LinearLayout>
 

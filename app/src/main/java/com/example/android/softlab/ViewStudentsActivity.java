@@ -1,5 +1,6 @@
 package com.example.android.softlab;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -45,11 +46,23 @@ public class ViewStudentsActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Find the current earthquake that was clicked on
                 Student currentStudent = adapter.getItem(position);
-                Toast.makeText(ViewStudentsActivity.this, currentStudent.getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ViewStudentsActivity.this, RetrieveStudent.class);
+                intent.putExtra("regNo", currentStudent.getRegNo());
+                intent.putExtra("course", currentStudent.getCourse());
+                intent.putExtra("name", currentStudent.getName());
+                intent.putExtra("fname", currentStudent.getFname());
+                intent.putExtra("mname", currentStudent.getMname());
+                intent.putExtra("address", currentStudent.getAddress());
+                intent.putExtra("state", currentStudent.getState());
+                intent.putExtra("city", currentStudent.getCity());
+                intent.putExtra("pno", currentStudent.getPhoneNo());
+                intent.putExtra("sex", currentStudent.getSex());
+                intent.putExtra("dob", currentStudent.getDob());
+                intent.putExtra("email", currentStudent.getEmail());
+                intent.putExtra("district",currentStudent.getDistrict());
+                startActivity(intent);
             }
-
         });
 
         new ExecuteTask().execute("test", "test");
